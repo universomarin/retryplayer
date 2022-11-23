@@ -8,17 +8,18 @@
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
-  <div class="container">
-    <div class="column">
-        <h1>Backlog</h1>
-        <div class="item" draggable="true">Crear proyecto</div>
-        <div class="item" draggable="true">Crear repositorio Git</div>
-        <div class="item" draggable="true">Deploy en Netlify</div>
-        <div class="item" draggable="true">Investigar</div>
-        <div class="item" draggable="true">Crear hipótesis</div>
+  <div class="container" id="container">
+    <button onclick="addElement()">Click me</button>
+    <div class="column" id="to-do">
+      <h1>Backlog</h1>
+      <div class="item" draggable="true">Crear proyecto</div>
+      <div class="item" draggable="true">Crear repositorio Git</div>
+      <div class="item" draggable="true">Deploy en Netlify</div>
+      <div class="item" draggable="true">Investigar</div>
+      <div class="item" draggable="true">Crear hipótesis</div>
     </div>
     <div class="column">
-        <h1>To do</h1>
+      <h1>To do</h1>
     </div>
     <div class="column">
         <h1>Doing</h1>

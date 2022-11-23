@@ -1,17 +1,14 @@
-const items = document.querySelectorAll('.item')
-const columns = document.querySelectorAll('.column')
-
-items.forEach(item => {
-  item.addEventListener('dragstart', dragStart)
-  item.addEventListener('dragend', dragEnd)
-});
-
-columns.forEach(column => {
-  column.addEventListener('dragover', dragOver);
-  column.addEventListener('dragenter', dragEnter);
-  column.addEventListener('dragleave', dragLeave);
-  column.addEventListener('drop', dragDrop);
-});
+function addElement() {
+  const newDiv = document.createElement('div');
+  const newContent = document.createTextNode('Nueva tarea');
+  newDiv.className = "item";
+  newDiv.setAttribute('draggable', 'true');
+  newDiv.appendChild(newContent);
+  const currentDiv = document.getElementById('container');
+  const currentToDo = document.getElementById('to-do');
+  const taskNew = currentDiv.insertBefore(newDiv, currentToDo);
+  currentToDo.appendChild(taskNew);
+}
 
 function dragStart() {
   console.log('drag started');
@@ -40,3 +37,18 @@ function dragEnter() {
 function dragLeave() {
   console.log('drag left');
 }
+
+const items = document.querySelectorAll('.item')
+const columns = document.querySelectorAll('.column')
+
+items.forEach(item => {
+  item.addEventListener('dragstart', dragStart)
+  item.addEventListener('dragend', dragEnd)
+});
+
+columns.forEach(column => {
+  column.addEventListener('dragover', dragOver);
+  column.addEventListener('dragenter', dragEnter);
+  column.addEventListener('dragleave', dragLeave);
+  column.addEventListener('drop', dragDrop);
+});
