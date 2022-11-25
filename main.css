@@ -2,6 +2,7 @@
   font-family: "Trebuchet MS", sans-serif;
   display: flex;
   gap: 30px;
+  overflow-y: hidden;
 }
 .column {
   flex-basis: 20%;
@@ -41,6 +42,7 @@ input {
 }
 .item {
   display: flex;
+  color: #fff;
   justify-content: center;
   font-size: 0.8rem;
   align-items: center;

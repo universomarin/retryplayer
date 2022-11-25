@@ -177,7 +177,7 @@ function addElement(e) {
     column.querySelector(".content").appendChild(todoItem);
     addToStorage(columnId, inputValue);
   } else {
-    alert('Agrega un título a tu tarea');
+    alert('Agrega un título a tu nueva tarea');
   }
 }
 
