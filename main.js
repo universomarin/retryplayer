@@ -147,11 +147,49 @@ function renderTodoLists(currentDiv, config) {
       content.ondrop = drop;
       content.ondragover = dragDrop;
       content.ondragleave = dragLeave;
+
       const items = getListFromStorage(columnId);
       items.forEach((todoValue) => {
         const todoItem = createTodoItem(columnId, todoValue);
         content.appendChild(todoItem);
+        const drag = todoItem;
+        console.log(items,drag, 'itemmmm movi');
+        let itemAppend;
+        content.addEventListener("touchmove", (ev) => {
+          ev.preventDefault();
+  
+          let touch = ev.targetTouches[0];
+          drag.style.top = `${touch.pageY - (column.offsetTop) - (drag.offsetWidth / 2)}px`;
+          drag.style.left = `${touch.pageX - (column.offsetLeft) - (drag.offsetHeight / 2)}px`;
+        
+          content.map(item => {
+            if (
+              drag.getBoundingClientRect().top + drag.offsetWidth / 2 < item.getBoundingClientRect().bottom &&
+              drag.getBoundingClientRect().right - drag.offsetWidth / 2 > item.getBoundingClientRect().left &&
+              drag.getBoundingClientRect().bottom - drag.offsetWidth / 2 > item.getBoundingClientRect().top &&
+              drag.getBoundingClientRect().left + drag.offsetWidth / 2 < item.getBoundingClientRect().right
+            ) {
+              item.classList.add('active');
+              itemAppend = item;
+            }
+            else {
+              item.classList.remove('active');
+            }
+          });
+        });
+        content.addEventListener("touchend", (ev) => {
+          if (itemAppend.classList.contains('active')) {
+            itemAppend.append(this);
+            this.style.top = `${itemAppend.offsetTop}px`;
+            this.style.left = `${itemAppend.offsetLeft}px`;
+          }
+          else {
+            this.style.top = `${itemAppend.offsetTop}px`;
+            this.style.left = `${itemAppend.offsetLeft}px`;
+          }
+        });
       });
+
 
       column.appendChild(title);
       column.appendChild(content);
@@ -188,6 +226,7 @@ function getListId(column) {
 function createTodoItem(columnId, inputValue) {
   const todoItem = document.createElement("item");
   todoItem.className = "item";
+  todoItem.setAttribute("id", "_draggable")
   todoItem.innerHTML = inputValue;
   todoItem.tabIndex = 0;
 
