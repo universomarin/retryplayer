@@ -1,30 +1,89 @@
-.container{
+.container {
   font-family: "Trebuchet MS", sans-serif;
   display: flex;
   gap: 30px;
 }
-.column{
+.column {
   flex-basis: 20%;
   background: #ddd;
   min-height: 90vh;
   padding: 20px;
   border-radius: 10px;
 }
-.column h1{
+.title {
+  font-size: 1.5rem;
+}
+input {
+  font-size: 0.8rem;
+}
+.title, input {
   text-align: center;
-  font-size: 22px;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 0;
+  font-weight: 700;
+  color: black;
+  background: transparent;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, #ee790f 0%, #eb525a 100%);
+  border-image-slice: 1;
+  box-sizing: border-box !important;
+  border-width: 0px 0px 4px 0px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 0%);
+  transition: 0.3s ease;
 }
 .content {
   display: flex;
   flex-direction: column;
+  padding: 0;
+  min-height: 50vh;
 }
-.item{
-  background: #fff;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 3px;
+.item {
+  display: flex;
+  justify-content: center;
+  font-size: 0.8rem;
+  align-items: center;
+  position: relative;
+  padding: 16px;
+  background: #ee790f;
+  background: linear-gradient(to right, #ee790f 0%, #eb525a 100%);
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+  transition: 0.3s ease;
+  margin: 8px 0;
   cursor: pointer;
 }
-.invisible{
+.invisible {
   display: none;
+}
+
+button {
+  background: transparent;
+  box-shadow: none;
+  padding: 5px;
+  align-items: center;
+  margin-top: 10px;
+  transition: 0.3s ease;
+  border-radius: 100%;
+  border: 1px solid #ee790f;
+  width: 50px;
+  height: 50px;
+}
+
+.icon::before {
+  content: "";
+  display: inline-block;
+  min-height: 25px;
+  min-width: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.icon-add::before {
+  background-image: url("data:image/svg+xml,%3Csvg width='448' height='448' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient x1='0%25' y1='0%25' y2='100%25' id='a'%3E%3Cstop stop-color='%23EE790F' offset='0%25'/%3E%3Cstop stop-color='%23EB525A' offset='100%25'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M416 176H272V32c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V272h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z' fill='url(%23a)' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.icon {
+  transition: 0.3s ease;
 }

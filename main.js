@@ -120,21 +120,27 @@ function renderTodoLists(currentDiv, config) {
       column.setAttribute("data-id", item.name);
       const columnId = item.name;
 
+      const title = document.createElement("h3");
+      title.className = "title";
+      title.innerHTML = columnId;
+      title.tabIndex = 0;
+      title.setAttribute("aria-label", columnId);
+
       const input = document.createElement("input");
       input.className = "input";
       input.type = "text";
-      input.placeholder = "Escribir nueva tarea...";
+      input.placeholder = "Título de nueva tarea";
       input.addEventListener("keydown", function (e) {
         if (e.code === "Enter") {
           addElement(e);
         }
       });
 
-      const title = document.createElement("h3");
-      title.className = "title";
-      title.innerHTML = columnId;
-      title.tabIndex = 0;
-      title.setAttribute("aria-label", columnId);
+      const button = document.createElement("button");
+      button.className = "icon icon-add";
+      button.onclick = addElement;
+      button.type = "button";
+      
 
       const content = document.createElement("ul");
       content.className = "content";
@@ -147,15 +153,9 @@ function renderTodoLists(currentDiv, config) {
         content.appendChild(todoItem);
       });
 
-      const button = document.createElement("button");
-      button.className = "button";
-      button.onclick = addElement;
-      button.type = "button";
-      button.innerText = "Crear tarea";
-
       column.appendChild(title);
-      column.appendChild(input);
       column.appendChild(content);
+      column.appendChild(input);
       column.appendChild(button);
 
       container.appendChild(column);
@@ -176,6 +176,8 @@ function addElement(e) {
     const todoItem = createTodoItem(columnId, inputValue);
     column.querySelector(".content").appendChild(todoItem);
     addToStorage(columnId, inputValue);
+  } else {
+    alert('Agrega un título a tu tarea');
   }
 }
 
@@ -190,7 +192,6 @@ function createTodoItem(columnId, inputValue) {
   todoItem.tabIndex = 0;
 
   todoItem.setAttribute("aria-label", `${columnId} column item: ${inputValue}`);
-  todoItem.onclick = onTodoClick;
 
   todoItem.setAttribute("draggable", true);
   todoItem.ondragstart = drag;
